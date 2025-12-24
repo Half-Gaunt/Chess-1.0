@@ -5,94 +5,192 @@ using namespace std;
 
 //Moves 1 space twards opponent's side (Do 1)
 void whitePawnMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
-    //Remove this later (testing)
-    std::cout << "Function works (White Pawn)\n";
 
-    bool pawnFirstMove = false;
     bool doubleMoveAvailable = false;
 
     if (rowStartingLocation == 6) {
-        pawnFirstMove = true;
         doubleMoveAvailable = true;
     }
 
-    if (pawnFirstMove == true) {
-        std::cout << "Test\n";
-
+    if (doubleMoveAvailable == true) {
+        if (rowEndingLocation == rowStartingLocation - 2 && colEndingLocation == colStartingLocation) {
+            //Make the move on the board
+            board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+            board[rowStartingLocation][colStartingLocation] = "  ";
+        } else if (rowEndingLocation == rowStartingLocation - 1 && colEndingLocation == colStartingLocation) {
+            //Make the move on the board
+            board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+            board[rowStartingLocation][colStartingLocation] = "  ";
+        } else {
+            std::cout << "Invalid move for Pawn.\n";
+        }
+    } else {
+        if (rowEndingLocation == rowStartingLocation - 1 && colEndingLocation == colStartingLocation) {
+            //Make the move on the board
+            board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+            board[rowStartingLocation][colStartingLocation] = "  ";
+        } else {
+            std::cout << "Invalid move for Pawn.\n";
+        }
     }
 
-
-
 }
-void blackPawnMovement () {
-    std::cout << "Function works (Black Pawn)" << std::endl;
+void blackPawnMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+
+    bool doubleMoveAvailable = false;
+
+    if (rowStartingLocation == 1) {
+        doubleMoveAvailable = true;
+    }
+
+    if (doubleMoveAvailable == true) {
+        if (rowEndingLocation == rowStartingLocation + 2 && colEndingLocation == colStartingLocation) {
+            //Make the move on the board
+            board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+            board[rowStartingLocation][colStartingLocation] = "  ";
+        } else if (rowEndingLocation == rowStartingLocation + 1 && colEndingLocation == colStartingLocation) {
+            //Make the move on the board
+            board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+            board[rowStartingLocation][colStartingLocation] = "  ";
+        } else {
+            std::cout << "Invalid move for Pawn.\n";
+        }
+    } else {
+        if (rowEndingLocation == rowStartingLocation + 1 && colEndingLocation == colStartingLocation) {
+            //Make the move on the board
+            board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+            board[rowStartingLocation][colStartingLocation] = "  ";
+        } else {
+            std::cout << "Invalid move for Pawn.\n";
+        }
+    }
 }
 
 //Can move 1 space in any direction (Do 2)
-void whitekingMovement () {
-    std::cout << "Function works (White King)\n";
+void whiteKingMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+
+    if (rowEndingLocation >= rowStartingLocation - 1 && rowEndingLocation <= rowStartingLocation + 1 &&
+        colEndingLocation >= colStartingLocation - 1 && colEndingLocation <= colStartingLocation + 1) {
+        
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for King.\n";
+    }
+
 }
-void blackKingMovement () {
-    std::cout << "Function works (Black King)\n";
+void blackKingMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+    
+    if (rowEndingLocation >= rowStartingLocation - 1 && rowEndingLocation <= rowStartingLocation + 1 &&
+        colEndingLocation >= colStartingLocation - 1 && colEndingLocation <= colStartingLocation + 1) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for King.\n";
+    }
+
 }
 
 //Straight movement (Do 3)
-void whiteRookMovement () {
-    std::cout << "Function works (White Rook)\n";
+void whiteRookMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+    
+    if (rowEndingLocation == rowStartingLocation || colEndingLocation == colStartingLocation) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Rook.\n";
+    }
+
 }
-void blackRookMovement () {
-    std::cout << "Function works (Black Rook)\n";
+void blackRookMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+    
+    if (rowEndingLocation == rowStartingLocation || colEndingLocation == colStartingLocation) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Rook.\n";
+    }
+
 }
 
 //Diagonal movement (Do 4)
-void whitebishopMovement () {
-    std::cout << "Function works (White Bishop)\n";
+void whiteBishopMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+    
+    if (abs(rowEndingLocation - rowStartingLocation) == abs(colEndingLocation - colStartingLocation)) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Bishop.\n";
+    }
+
 }
-void blackBishopMovement () {
-    std::cout << "Function works (Black Bishop)\n";
+void blackBishopMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+    
+    if (abs(rowEndingLocation - rowStartingLocation) == abs(colEndingLocation - colStartingLocation)) {
+        //Make the move on the board
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Bishop.\n";
+    }
+
 }
 
 //This will be Bishop movement + Rook movement (Do 5)
-void whiteQueenMovement () {
-    std::cout << "Function works (White Queen)\n";
+void whiteQueenMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+
+    if (rowEndingLocation == rowStartingLocation || colEndingLocation == colStartingLocation ||
+        abs(rowEndingLocation - rowStartingLocation) == abs(colEndingLocation - colStartingLocation)) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Queen.\n";
+    }
+
 }
-void blackQueenMovement () {
-    std::cout << "Function works (Black Queen)\n";
+void blackQueenMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
+   
+    if (rowEndingLocation == rowStartingLocation || colEndingLocation == colStartingLocation ||
+        abs(rowEndingLocation - rowStartingLocation) == abs(colEndingLocation - colStartingLocation)) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Queen.\n";
+    }
+
 }
 
 //L shaped movement (Complicated, do last)
-void whiteKnightMovement () {
-    std::cout << "Function works (White Knight)\n";
-}
-void blackKnightMovement () {
-    std::cout << "Function works (Black Knight)\n";
-}
+void whiteKnightMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
 
-//Intergrate this into the main code. 
-/*void checkForPiece(int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string currentPlayer, std::string board[8][8], std::string pieceAtStartingLocation, std::string pieceAtDestination, bool validMove) {
-    //Add logic to make sure that the ending location does not have a piece of the same color. 
-    //Make the logic to check the spaces inbetween for pieces later.
-    validMove == true;
+    if ((abs(rowEndingLocation - rowStartingLocation) == 2 && abs(colEndingLocation - colStartingLocation) == 1) ||
+        (abs(rowEndingLocation - rowStartingLocation) == 1 && abs(colEndingLocation - colStartingLocation) == 2)) {
 
-    if (currentPlayer == "white") {
-
-        //Checks to see if the piece is the same color as white. 
-        
-        if (pieceAtDestination == "♜" || pieceAtDestination == "♞" || pieceAtDestination == "♝" || pieceAtDestination == "♛" || pieceAtDestination == "♚" || pieceAtDestination == "♟") {
-            std::cout << "You cannot move to that space, there is a piece of the same color there.\n";
-        }
-
-    } else { //If it's not white's turn, then it must be black's turn. 
-
-        if (pieceAtDestination == "♖" || pieceAtDestination == "♘" || pieceAtDestination == "♗" || pieceAtDestination == "♕" || pieceAtDestination == "♔" || pieceAtDestination == "♙") {
-            std::cout << "You cannot move to that space, there is a piece of the same color there.\n";
-        }
-        
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Knight.\n";
     }
 
-    std::cout << pieceAtStartingLocation << pieceAtDestination << "\n";
+}
+void blackKnightMovement (int rowStartingLocation, int colStartingLocation, int rowEndingLocation, int colEndingLocation, std::string board[8][8], std::string pieceAtStartingLocation) {
 
-}*/
+    if ((abs(rowEndingLocation - rowStartingLocation) == 2 && abs(colEndingLocation - colStartingLocation) == 1) ||
+        (abs(rowEndingLocation - rowStartingLocation) == 1 && abs(colEndingLocation - colStartingLocation) == 2)) {
+
+        board[rowEndingLocation][colEndingLocation] = pieceAtStartingLocation;
+        board[rowStartingLocation][colStartingLocation] = "  ";
+    } else {
+        std::cout << "Invalid move for Knight.\n";
+    }
+
+}
 
 void displayBoard(std::string board[8][8]) {
     cout << "Current board:\n" << endl;
@@ -111,12 +209,11 @@ void displayBoard(std::string board[8][8]) {
         cout << "\n";
 }
 
-/*Things to inprove from 1.0
-1. Make everything into functions so it is reusable and cleaner.
-2. Make turns alternate between white and black and make it so that the player can only move their own pieces.
-3. Make logic to see if a piece is in the way of another piece. Like if a rook is trying to move through a pawn. If there is a piece in the way,
-   it cannot move. If there is no piece in the way, it can move.
-*/
+/*1. Make logic to check if there is a piece as the same color at the destination
+  2. Make sure that if your move is invalid, you get to choose again without losing your turn.
+  3. Implement check, checkmate, and stalemate conditions.
+  4. Implement special moves (castling, en passant, pawn promotion).
+  5. Make the board flip after each turn so players can see from their perspective.*/
 
 int main() {
     
@@ -136,8 +233,6 @@ int main() {
         //White pieces are on the bottom, black pieces are on the top.
     };
 
-    displayBoard(board);
-
     std::string currentPlayer;
     std::string pieceAtStartingLocation;
     std::string pieceAtDestination;
@@ -151,35 +246,26 @@ int main() {
     bool canMoveWhitePiece = false;
     bool canMoveBlackPiece = false;
     
+    bool canCastleWhite = true;
+    bool canCastleBlack = true;
+
     //A > a > 1 
 
     std::cout << "When asked for row and column, please follow chess notation.\n\nIf the piece is at e2, input e2 (row first, then column).\n\n";
 
     //While loop while no-one has won the game.
     while (gameOver == false) {
-        bool validMove = false;
+        bool validMoveWhite = false;
+        bool validMoveBlack = false;
 
-        //Make something to alternate turns between white and black.
-        if (turn % 2 == 0) {
-            currentPlayer = "white";
-            std::cout << "White's turn." << std::endl;
+        displayBoard(board);
 
-        } else {
-            currentPlayer = "black";
-            std::cout << "Black's turn." << std::endl;
-        }
-
-        std::cout << "What piece do you want to move? : \n";
+        std::cout << "What piece do you want to move? (White) : \n";
         std::cin >> chessNotationStartingLocation;
 
         std::cout << "Where do you want to move it? : \n";
         std::cin >> chessNotationEndingLocation;
 
-        //Test
-        std::cout << chessNotationStartingLocation << " " << chessNotationEndingLocation << "\n";
-
-        //Need to make a 64 switch statement to identify where on the grid the piece is based on chess notation.
-        //Need to translate chess notation into array locations
         switch (chessNotationStartingLocation[0]) {
             case 'a': colStartingLocation = 0; break;
             case 'b': colStartingLocation = 1; break;
@@ -192,87 +278,111 @@ int main() {
             default: std::cout << "Invalid column input.\n"; break;
         }
 
+        switch (chessNotationStartingLocation[1]) {
+            case '1': rowStartingLocation = 7; break;
+            case '2': rowStartingLocation = 6; break;
+            case '3': rowStartingLocation = 5; break;
+            case '4': rowStartingLocation = 4; break;
+            case '5': rowStartingLocation = 3; break;
+            case '6': rowStartingLocation = 2; break;
+            case '7': rowStartingLocation = 1; break;
+            case '8': rowStartingLocation = 0; break;
+            default: std::cout << "Invalid row input.\n"; break;
+        }
 
-        std::cout << colStartingLocation << "\n";
-        //To adjust for array starting at 0
-        //rowStartingLocation--; colStartingLocation--;
-        //rowEndingLocation--; colEndingLocation--;
+        std::string pieceAtStartingLocation = board[rowStartingLocation][colStartingLocation];
 
-        //std::string pieceAtStartingLocation = board[rowStartingLocation][colStartingLocation];
-        //std::string pieceAtDestination = board[rowEndingLocation][colEndingLocation];
+        switch (chessNotationEndingLocation[0]) {
+            case 'a': colEndingLocation = 0; break;
+            case 'b': colEndingLocation = 1; break;
+            case 'c': colEndingLocation = 2; break;
+            case 'd': colEndingLocation = 3; break;
+            case 'e': colEndingLocation = 4; break;
+            case 'f': colEndingLocation = 5; break;
+            case 'g': colEndingLocation = 6; break;
+            case 'h': colEndingLocation = 7; break;
+            default: std::cout << "Invalid column input.\n"; break;
+        }
 
-        //Remove this later (testing)
-        //std::cout << pieceAtStartingLocation << pieceAtDestination << "\n";
+        switch (chessNotationEndingLocation[1]) {
+            case '1': rowEndingLocation = 7; break;
+            case '2': rowEndingLocation = 6; break;
+            case '3': rowEndingLocation = 5; break;
+            case '4': rowEndingLocation = 4; break;
+            case '5': rowEndingLocation = 3; break;
+            case '6': rowEndingLocation = 2; break;
+            case '7': rowEndingLocation = 1; break;
+            case '8': rowEndingLocation = 0; break;
+            default: std::cout << "Invalid row input.\n"; break;
+        }    
+
+        std::string pieceAtDestination = board[rowEndingLocation][colEndingLocation];
 
 
-        //PAST THIS POINT THE CODE WILL NOT WORK PROPERLY UNTIL CHESS NOTATION IS IMPLEMENTED.
+
+        //Make something to alternate turns between white and black.
+        if (turn % 2 == 0) {
+            currentPlayer = "white";
+            std::cout << "White's turn." << std::endl;
+
+        } else {
+            currentPlayer = "black";
+            std::cout << "Black's turn." << std::endl;
+        }
 
         //Player logic
         if (currentPlayer == "white") {
-                
-            //The code needed to identify what piece is being moved and where it is moving to needs to stay out of the currentPlayer if statements.
 
-            //If a player atempts an invalid move, make them choose again without losing their turn.
-
-            if (pieceAtDestination == "♜ " || pieceAtDestination == "♞ " || pieceAtDestination == "♝ " || pieceAtDestination == "♛ " || pieceAtDestination == "♚ " || pieceAtDestination == "♟ ") {
+        //If a player atempts an invalid move, make them choose again without losing their turn.
+        if (pieceAtDestination == "♜ " || pieceAtDestination == "♞ " || pieceAtDestination == "♝ " || pieceAtDestination == "♛ " || pieceAtDestination == "♚ " || pieceAtDestination == "♟ ") {
             std::cout << "You cannot move to that space, there is a piece of the same color there.\n";
-            validMove = false;
-            } else {
-                validMove = true;
-            }
+            validMoveWhite = false;
+        } else {
+            validMoveWhite = true;
+        }
 
 
-            //Make this a switch statement for cleaner code.
-            if (pieceAtStartingLocation == "♟ ") {
-                whitePawnMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
-            } else if (pieceAtStartingLocation == "♚ ") {
-                whitekingMovement();
-            } else if (pieceAtStartingLocation == "♜ ") {
-                whiteRookMovement();
-            } else if (pieceAtStartingLocation == "♝ ") {
-                whitebishopMovement();
-            } else if (pieceAtStartingLocation == "♛ ") {
-                whiteQueenMovement();
-            } else if (pieceAtStartingLocation == "♞ ") {
-                whiteKnightMovement();
-            } else {
-                std::cout << "That is not a valid piece. Please choose again.\n";
-            }
+        if (pieceAtStartingLocation == "♟ ") {
+            whitePawnMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♚ ") {
+            whiteKingMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♜ ") {
+            whiteRookMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♝ ") {
+            whiteBishopMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♛ ") {
+            whiteQueenMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♞ ") {
+            whiteKnightMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation  );
+        } else {
+            std::cout << "That is not a valid piece. Please choose again.\n";
+        }
 
         //Make this mirrored for black pieces. aka copy the code from above and change the pieces to black pieces.
         } else if (currentPlayer == "black") {
-            canMoveBlackPiece = true;
-        
-            std::cout << "What piece do you want to move? (row and column(Black)): \n";
-            
-            cin >> rowStartingLocation >> colStartingLocation;
-                
-            //To adjust for array starting at 0
-            rowStartingLocation--; colStartingLocation--;
-                
-            //Idenify piece at starting location
-            std::string pieceAtStartingLocation = board[rowStartingLocation][colStartingLocation];
 
-            //Remove this later (testing)
-            std::cout << pieceAtStartingLocation << "\n";
+        if (pieceAtDestination == "♖ " || pieceAtDestination == "♘ " || pieceAtDestination == "♗ " || pieceAtDestination == "♕ " || pieceAtDestination == "♔ " || pieceAtDestination == "♙ ") {
+            std::cout << "You cannot move to that space, there is a piece of the same color there.\n";
+            validMoveBlack = false;
+        } else {
+            validMoveBlack = true;
+        }
 
-            //This is where main code will be.
-
-            if (pieceAtStartingLocation == "♙ ") {
-                blackPawnMovement();
-            } else if (pieceAtStartingLocation == "♔ ") {
-                blackKingMovement();
-            } else if (pieceAtStartingLocation == "♖ ") {
-                blackRookMovement();
-            } else if (pieceAtStartingLocation == "♗ ") {
-                blackBishopMovement();
-            } else if (pieceAtStartingLocation == "♕ ") {
-                blackQueenMovement();
-            } else if (pieceAtStartingLocation == "♘ ") {
-                blackKnightMovement();
-            } else {
-                std::cout << "That is not a valid piece. Please choose again.\n";
-            }
+        if (pieceAtStartingLocation == "♙ ") {
+            blackPawnMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♔ ") {
+            blackKingMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♖ ") {
+            blackRookMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♗ ") {
+            blackBishopMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♕ ") {
+            blackQueenMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else if (pieceAtStartingLocation == "♘ ") {
+            blackKnightMovement(rowStartingLocation, colStartingLocation, rowEndingLocation, colEndingLocation, board, pieceAtStartingLocation);
+        } else {
+            std::cout << "That is not a valid piece. Please choose again.\n";
+        }
 
         }
 
